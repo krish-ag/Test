@@ -1,0 +1,187 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="DuplicatedCode" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <Languages>
+        <language minSize="47" name="JavaScript" />
+        <language minSize="630" name="Python" />
+      </Languages>
+    </inspection_tool>
+    <inspection_tool class="Eslint" enabled="true" level="WARNING" enabled_by_default="true" />
+    <inspection_tool class="HtmlDeprecatedAttribute" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="HtmlFormInputWithoutLabel" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="HtmlRequiredAltAttribute" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="HtmlUnknownAttribute" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="myValues">
+        <value>
+          <list size="3">
+            <item index="0" class="java.lang.String" itemvalue="drive" />
+            <item index="1" class="java.lang.String" itemvalue="location" />
+            <item index="2" class="java.lang.String" itemvalue="data" />
+          </list>
+        </value>
+      </option>
+      <option name="myCustomValuesEnabled" value="true" />
+    </inspection_tool>
+    <inspection_tool class="HtmlUnknownTag" enabled="false" level="WARNING" enabled_by_default="false">
+      <option name="myValues">
+        <value>
+          <list size="7">
+            <item index="0" class="java.lang.String" itemvalue="nobr" />
+            <item index="1" class="java.lang.String" itemvalue="noembed" />
+            <item index="2" class="java.lang.String" itemvalue="comment" />
+            <item index="3" class="java.lang.String" itemvalue="noscript" />
+            <item index="4" class="java.lang.String" itemvalue="embed" />
+            <item index="5" class="java.lang.String" itemvalue="script" />
+            <item index="6" class="java.lang.String" itemvalue="bootstrap" />
+          </list>
+        </value>
+      </option>
+      <option name="myCustomValuesEnabled" value="true" />
+    </inspection_tool>
+    <inspection_tool class="HtmlUnknownTarget" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="HttpUrlsUsage" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <option name="ignoredUrls">
+        <list>
+          <option value="http://localhost" />
+          <option value="http://127.0.0.1" />
+          <option value="http://0.0.0.0" />
+          <option value="http://www.w3.org/2000/svg" />
+          <option value="http://www.w3.org/2000/10/XMLSchema" />
+          <option value="http://www.w3.org/2001/XMLSchema" />
+          <option value="http://www.w3.org/2001/XMLSchema-instance" />
+          <option value="http://www.w3.org/2001/XInclude" />
+          <option value="http://www.w3.org/2003/03/wsdl" />
+          <option value="http://json-schema.org/draft" />
+          <option value="http://java.sun.com/xml/ns/" />
+          <option value="http://java.sun.com/jsp/" />
+          <option value="http://java.sun.com/JSP/" />
+          <option value="http://java.sun.com/j2ee/dtds/" />
+          <option value="http://java.sun.com/dtd/" />
+          <option value="http://xmlns.jcp.org/xml/ns/" />
+          <option value="http://javafx.com/javafx/" />
+          <option value="http://javafx.com/fxml" />
+          <option value="http://maven.apache.org/xsd/" />
+          <option value="http://maven.apache.org/POM/" />
+          <option value="http://www.springframework.org/schema/" />
+          <option value="http://www.springframework.org/tags" />
+          <option value="http://www.thymeleaf.org" />
+          <option value="http://www.jboss.org/j2ee/schema/" />
+          <option value="http://www.jboss.com/xml/ns/" />
+          <option value="http://www.ibm.com/webservices/xsd" />
+          <option value="http://activemq.apache.org/schema/" />
+          <option value="http://schema.cloudfoundry.org/spring/" />
+          <option value="http://schemas.xmlsoap.org/" />
+          <option value="http://schemas.android.com/" />
+          <option value="http://jakarta.apache.org/" />
+          <option value="http://cxf.apache.org/schemas/" />
+          <option value="http://192.168.18.30" />
+        </list>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="InjectedReferences" enabled="false" level="ERROR" enabled_by_default="false" />
+    <inspection_tool class="JSUnresolvedLibraryURL" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="PyBroadExceptionInspection" enabled="false" level="WEAK WARNING" enabled_by_default="false" />
+    <inspection_tool class="PyNoneFunctionAssignmentInspection" enabled="false" level="WEAK WARNING" enabled_by_default="false" />
+    <inspection_tool class="PyPackageRequirementsInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredPackages">
+        <value>
+          <list size="25">
+            <item index="0" class="java.lang.String" itemvalue="pandas" />
+            <item index="1" class="java.lang.String" itemvalue="dnspython" />
+            <item index="2" class="java.lang.String" itemvalue="discord" />
+            <item index="3" class="java.lang.String" itemvalue="SQLAlchemy" />
+            <item index="4" class="java.lang.String" itemvalue="gunicorn" />
+            <item index="5" class="java.lang.String" itemvalue="Flask-SQLAlchemy" />
+            <item index="6" class="java.lang.String" itemvalue="altgraph" />
+            <item index="7" class="java.lang.String" itemvalue="pyinstaller" />
+            <item index="8" class="java.lang.String" itemvalue="selenium" />
+            <item index="9" class="java.lang.String" itemvalue="future" />
+            <item index="10" class="java.lang.String" itemvalue="pywin32-ctypes" />
+            <item index="11" class="java.lang.String" itemvalue="pefile" />
+            <item index="12" class="java.lang.String" itemvalue="pyinstaller-hooks-contrib" />
+            <item index="13" class="java.lang.String" itemvalue="Werkzeug" />
+            <item index="14" class="java.lang.String" itemvalue="certifi" />
+            <item index="15" class="java.lang.String" itemvalue="MarkupSafe" />
+            <item index="16" class="java.lang.String" itemvalue="urllib3" />
+            <item index="17" class="java.lang.String" itemvalue="itsdangerous" />
+            <item index="18" class="java.lang.String" itemvalue="click" />
+            <item index="19" class="java.lang.String" itemvalue="Jinja2" />
+            <item index="20" class="java.lang.String" itemvalue="Flask" />
+            <item index="21" class="java.lang.String" itemvalue="discum" />
+            <item index="22" class="java.lang.String" itemvalue="Pillow" />
+            <item index="23" class="java.lang.String" itemvalue="Django" />
+            <item index="24" class="java.lang.String" itemvalue="sqlparse" />
+          </list>
+        </value>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyPep8Inspection" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <option name="ignoredErrors">
+        <list>
+          <option value="W292" />
+          <option value="E501" />
+          <option value="E303" />
+          <option value="E731" />
+          <option value="E722" />
+          <option value="E402" />
+          <option value="E101" />
+          <option value="W191" />
+          <option value="E741" />
+        </list>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyPep8NamingInspection" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <option name="ignoredErrors">
+        <list>
+          <option value="N802" />
+          <option value="N806" />
+          <option value="N813" />
+          <option value="N812" />
+          <option value="N803" />
+        </list>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyShadowingBuiltinsInspection" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <option name="ignoredNames">
+        <list>
+          <option value="input" />
+          <option value="id" />
+        </list>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyTupleAssignmentBalanceInspection" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="PyTypeCheckerInspection" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="PyUnboundLocalVariableInspection" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="PyUnresolvedReferencesInspection" enabled="true" level="INFORMATION" enabled_by_default="true">
+      <option name="ignoredIdentifiers">
+        <list>
+          <option value="app.Posts.query" />
+          <option value="werkzeug.contrib.sessions.Session.permanent" />
+          <option value="Shop.models.Order.id" />
+          <option value="dict.__getitem__" />
+          <option value="typing.NamedTuple.*" />
+          <option value="selenium.webdriver.chrome.options" />
+          <option value="app.Contacts.query" />
+          <option value="website.models.Posts.query" />
+          <option value="website.models.Contacts.query" />
+          <option value="website.models.User.query" />
+          <option value="website.models.Note.query" />
+          <option value="sys._MEIPASS" />
+          <option value="razorpay.client.Client.payment" />
+          <option value="razorpay.client.Client.order" />
+          <option value="RPi.GPIO.*" />
+          <option value="network.STA_IF" />
+          <option value="mip" />
+          <option value="urequests" />
+          <option value="machine.Pin.toggle" />
+          <option value="ntptime" />
+          <option value="requests" />
+          <option value="main.machine" />
+          <option value="network" />
+          <option value="machine" />
+        </list>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>
