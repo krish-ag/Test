@@ -1,6 +1,6 @@
 .header{
     width: 100%;
-    position: fixed;
+    /* position: fixed; */
     top: 0;
     left: 0;
     z-index: (--z-fixed);
@@ -56,6 +56,7 @@
 
 @media screen and (max-width: 768px) {
     .header{
+        position: fixed;
         top: initial;
         bottom: 0;
     }
