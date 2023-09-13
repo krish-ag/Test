@@ -1,17 +1,20 @@
-import React from 'react'
+import React, {useState} from 'react'
+import { Link } from 'react-router-dom';
 
 export default function SignupForm() {
+
+  const [isPassenger, setIsPassenger] = useState(true);
   return (
     <React.Fragment>
         <section className="bg-gray-50 dark:bg-gray-900">
   <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
       <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
         <div className="flex items-center">
-        <div style={{width:"50%"}} className="flex flex-col passenger p-3 items-center">
+        <div style={{width:"50%", cursor:"pointer"}} className="flex flex-col passenger p-3 items-center">
         <img src="https://img.icons8.com/dotty/80/0E9F6E/user.png" alt="user"/>
         <h3>Passenger</h3>
         </div>
-        <div style={{width:"50%"}} className="flex flex-col items-center driver p-3">
+        <div style={{width:"50%",  cursor:"pointer"}} className="flex flex-col items-center driver p-3">
         <img src="https://img.icons8.com/dotty/80/0E9F6E/driver.png" alt="driver"/>
         <h3>Driver</h3>
         </div>
@@ -43,7 +46,7 @@ export default function SignupForm() {
                   </div>
                   <button type="submit" className="w-full text-white bg-emerald-600 hover:bg-emerald-700 focus:ring-4 focus:outline-none focus:ring-emerald-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-emerald-600 dark:hover:bg-emerald-700 dark:focus:ring-emerald-800">Sign in</button>
                   <p className="text-sm font-light text-gray-500 dark:text-gray-400">
-                      Don’t have an account yet? <a href="#" className="font-medium text-emerald-600 hover:underline dark:text-emerald-500">Sign up</a>
+                      Don’t have an account yet? <Link to="/login" className="font-medium text-emerald-600 hover:underline dark:text-emerald-500">Sign up</Link>
                   </p>
               </form>
           </div>
