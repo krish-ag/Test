@@ -1,20 +1,18 @@
 import './App.css';
 import Home from "./pages/home";
-// import Home from './components/home/Home';
-// import About from './components/about/About';
-// import Skills from './components/skills/Skills';
-// import Services from './components/services/Services';
+import Login from './pages/login';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
     <>
-      <Home/>
-      {/* <main className="main">
-        <Home />
-        <About />
-        <Skills />
-        <Services />
-      </main> */}
+    <BrowserRouter>
+      <Routes>
+        <Route exact path="/" element={<Home />}/>
+        <Route exact path="/login" element={<Login />}/>
+      </Routes>
+    </BrowserRouter>
+      
     </>
   );
 }
