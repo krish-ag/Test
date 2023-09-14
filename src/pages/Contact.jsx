@@ -1,16 +1,18 @@
 import React from 'react'
-import Hero from '../components/heroSection/Hero'
 import Header from '../components/header/Header'
-import DisplayCont from '../components/publicTransportNearMe/DisplayCont'
+import Hero from '../components/heroSection/Hero'
+import ContactUs from '../components/forms/contact/ContactUs'
 import Footer from '../components/footer/Footer'
 
-export default function Home() {
+
+export default function Contact() {
   return (
     <React.Fragment>
         <Header />
         <Hero />
-        <DisplayCont />
-        <Footer />
+        <ContactUs />
+        <Footer/>
+
     </React.Fragment>
   )
 }
