@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import './header.css' 
+import { Link } from 'react-router-dom';
 
 const Header = () => {
 
@@ -11,45 +12,45 @@ const Header = () => {
   return (
     <header className="header">
         <nav className="nav container">
-            <a href="index.html" className="nav__logo">
+            <Link to="/" className="nav__logo">
                 <img className="w-36" src="Tracking.png" alt="" />
-            </a>
+            </Link>
             <div className={Toggle ? 'nav__menu show-menu' : 'nav__menu'}>
                 <ul className="nav__list grid">
                     <li className="nav__item">
-                        <a href="#home" className="nav__link active-link">
+                        <Link to="#home" className="nav__link active-link">
                             <i className="uil uil-estate nav__icon"></i>Home
-                        </a>
+                        </Link>
                     </li>
 
                     <li className="nav__item">
-                        <a href="#about" className="nav__link">
+                        <Link to="#about" className="nav__link">
                             <i className="uil uil-user nav__icon"></i>About
-                        </a>
+                        </Link>
                     </li>
 
                     <li className="nav__item">
-                        <a href="#skills" className="nav__link">
+                        <Link to="#skills" className="nav__link">
                             <i className="uil uil-file-alt nav__icon"></i>Book your Ride?
-                        </a>
+                        </Link>
                     </li>
 
                     <li className="nav__item">
-                        <a href="#services" className="nav__link">
+                        <Link to="#services" className="nav__link">
                             <i className="uil uil-briefcase-alt nav__icon"></i>Services
-                        </a>
+                        </Link>
                     </li>
 
                     <li className="nav__item">
-                        <a href="#portfolio" className="nav__link">
+                        <Link to="#portfolio" className="nav__link">
                             <i className="uil uil-bell nav__icon"></i>Notifications
-                        </a>
+                        </Link>
                     </li>
 
                     <li className="nav__item">
-                        <a href="#contact" className="nav__link">
+                        <Link to="/contact" className="nav__link">
                             <i className="uil uil-message nav__icon"></i>Contact
-                        </a>
+                        </Link>
                     </li>
                 </ul>
 
