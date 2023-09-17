@@ -50,6 +50,7 @@ export default function SignupForm() {
             .then(data => {
                 window.location.href = "/login"
             })
+            console.log(response)
         }
         catch(err){
             console.log(err);
