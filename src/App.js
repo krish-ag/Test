@@ -22,7 +22,6 @@ function App() {
         <Route path='/about' element={<AboutUs/>}/>
         <Route path='/forgot-password' element={<ForgotPassword/>}/>
         <Route path='/dashboard' element={<Dashboard/>}/>
-
       </Routes>
     </BrowserRouter>
       
