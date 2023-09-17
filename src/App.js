@@ -7,6 +7,7 @@ import Signup from './pages/Signup';
 import Contact from './pages/Contact';
 import AboutUs from './pages/AboutUs';
 import ForgotPassword from './pages/ForgotPassword';
+import Dashboard from './pages/Dashboard';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="*" element={<h1>404 Not Found</h1>}/>
         <Route path='/about' element={<AboutUs/>}/>
         <Route path='/forgot-password' element={<ForgotPassword/>}/>
+        <Route path='/dashboard' element={<Dashboard/>}/>
 
       </Routes>
     </BrowserRouter>

@@ -20,8 +20,10 @@ export default function ForgotPassword() {
   }
   return (
     <React.Fragment>
-    <section className="bg-gray-50 my-5 dark:bg-gray-900">
-<div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
+    <section className="bg-gray-50 dark:bg-gray-900">
+<div className="flex flex-col items-center justify-center px-6 py-8 md:h-full my-5 lg:py-0">
+<img className='mb-5' width="96" height="96" src="https://img.icons8.com/pulsar-line/96/0E9F6E/forgot-password.png" alt="forgot-password"/>
+  <p className="mb-5 text-l dark:text-white">Enter your email and we'll send you an OTP to reset your Password</p>
   <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
     
       <div className="p-6 space-y-4 md:space-y-6 sm:p-8">

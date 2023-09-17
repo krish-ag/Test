@@ -66,11 +66,11 @@ export default function SignupForm() {
         <div className="flex items-center">
         <div style={{width:"50%", cursor:"pointer"}} onClick={togglePassenger} className="flex flex-col passenger p-3 items-center">
         <img src="https://img.icons8.com/dotty/80/0E9F6E/user.png" alt="user"/>
-        <h3>Passenger</h3>
+        <h3 className='dark:text-white'>Passenger</h3>
         </div>
         <div style={{width:"50%",  cursor:"pointer"}} onClick={toggleDriver} className="flex flex-col items-center driver p-3">
         <img src="https://img.icons8.com/dotty/80/0E9F6E/driver.png" alt="driver"/>
-        <h3>Driver</h3>
+        <h3 className='dark:text-white'>Driver</h3>
         </div>
         </div>
         
