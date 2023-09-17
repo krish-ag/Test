@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Signup from './pages/Signup';
 import Contact from './pages/Contact';
 import AboutUs from './pages/AboutUs';
+import ForgotPassword from './pages/ForgotPassword';
 
 function App() {
   return (
@@ -18,8 +19,7 @@ function App() {
         <Route exact path="/contact" element={<Contact />}/>
         <Route path="*" element={<h1>404 Not Found</h1>}/>
         <Route path='/about' element={<AboutUs/>}/>
-        {/* <Route path='/accounts/activate/:token' element={<Login/>}/> */}
-        {/* <Route path='/accounts/activate/:token' element={<Login/>}/>  */}
+        <Route path='/forgot-password' element={<ForgotPassword/>}/>
       </Routes>
     </BrowserRouter>
       
