@@ -39,7 +39,7 @@ export default function SignupForm() {
         }
 
         try{
-            const response = await fetch("http://192.168.180.112:7000/accounts/signup/", {
+            const response = await fetch("http://192.168.18.244:7000/accounts/signup/", {
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
