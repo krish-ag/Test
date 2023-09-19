@@ -22,7 +22,7 @@ export default function LoginForm() {
         e.preventDefault();
 
         try{
-            const response = await fetch("http://192.168.1.125:7000/accounts/login/", {
+            const response = await fetch("http://192.168.166.112:7000/accounts/login/", {
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
@@ -33,11 +33,11 @@ export default function LoginForm() {
                 response.json()
             )
             .then(data => {
-                console.log(data);
                 if (data.status === "success") {
                     console.log("Login successful!");
                     // Set the session cookie with the session ID
                     Cookies.set("session_id_is", data.session_id, { expires: 1 }); // Adjust the expiration as needed
+                    console.log(data)
                     // window.location.href = "/login";
                 } else {
                     console.log("Login failed:", data.message);
@@ -54,8 +54,7 @@ export default function LoginForm() {
         <section className="bg-gray-50 my-5 dark:bg-gray-900">
   <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto lg:py-0">
       <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
-        
-          <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
+            <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
               <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
                   Sign in to your account
               </h1>
