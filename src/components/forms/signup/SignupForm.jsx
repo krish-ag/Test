@@ -1,9 +1,25 @@
 import React, {useState} from 'react'
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 export default function SignupForm() {
 
   const [isPassenger, setIsPassenger] = useState(true);
+
+  const [emailVerificationData, setEmailVerificationData] = React.useState({
+    otp: "",
+    });
+
+    const [verified, setVerified] = React.useState(false);
+
+    const handleVerificationChange =(e)=>{
+        const { name, value } = e.target;
+        console.log(name, value);
+        setEmailVerificationData({
+            ...emailVerificationData,
+            [name]: value
+        });
+    }
 
   const togglePassenger = () => {
     setIsPassenger(true);
@@ -39,30 +55,35 @@ export default function SignupForm() {
         }
 
         try{
-            const response = await fetch("http://192.168.18.244:7000/accounts/signup/", {
-                method: "POST",
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                },
-                body: JSON.stringify(formData)
-            })
-            .then(response => response.json())
-            .then(data => {
-                window.location.href = "/login"
-            })
-            console.log(response)
+            const response = await axios.post(`http://192.168.166.112:7000/accounts/signup/`, formData, { headers: { 'Content-Type': 'application/json' } })
+            console.log(response.data);
+            setVerified(true);
         }
         catch(err){
             console.log(err);
         }
     }
 
+    const handleOtpSubmit = async (e) =>{
+        e.preventDefault();
+        console.log(formData);
+        console.log(emailVerificationData);
+
+        try{
+            const response = await axios.post(`http://192.168.166.112:7000/accounts/activate/`, emailVerificationData, { headers: { 'Content-Type': 'application/json' } })
+			console.log(response.data);
+            window.location.href = "/login"
+        }
+        catch(err){
+            console.log(err);
+        }
+    }
 
   return (
     <React.Fragment>
         <section className="bg-gray-50 dark:bg-gray-900">
   <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto my-5 lg:py-0">
-      <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
+  {!verified && (<><div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
         <div className="flex items-center">
         <div style={{width:"50%", cursor:"pointer"}} onClick={togglePassenger} className="flex flex-col passenger p-3 items-center">
         <img src="https://img.icons8.com/dotty/80/0E9F6E/user.png" alt="user"/>
@@ -74,7 +95,7 @@ export default function SignupForm() {
         </div>
         </div>
         
-          <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
+        <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
               <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
                   Sign up to new account
               </h1>
@@ -153,7 +174,23 @@ export default function SignupForm() {
                   </p>
               </form>)}
           </div>
-      </div>
+      </div></>)}
+          {verified && (<>
+          <img className='mb-5' width="96" height="96" src="https://img.icons8.com/pulsar-line/96/0E9F6E/forgot-password.png" alt="forgot-password"/>
+  <p className="mb-5 text-l dark:text-white">An OTP has been sent to your registered mail id</p>
+          <div className="bg-white rounded-lg shadow dark:border dark:bg-gray-800 dark:border-gray-700">
+            <h1 className="text-xxl text-center font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white my-5">
+                  Email Verifying
+              </h1>
+              <form className="space-y-4 md:space-y-6 p-5" onSubmit={handleOtpSubmit}>
+                <div>
+                  <label htmlFor="otp" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Enter OTP</label>
+                  <input type="number" value={emailVerificationData.otp} onChange={handleVerificationChange}  name="otp" id="otp" placeholder="123456" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-emerald-600 focus:border-emerald-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"/>
+              </div>
+              <button type="submit" className="w-full text-white bg-emerald-600 hover:bg-emerald-700 focus:ring-4 focus:outline-none focus:ring-emerald-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-emerald-600 dark:hover:bg-emerald-700 dark:focus:ring-emerald-800">Submit OTP</button>
+              </form>
+          </div>
+          </>)}
   </div>
 </section>
     </React.Fragment>
