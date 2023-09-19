@@ -8,6 +8,9 @@ import Contact from './pages/Contact';
 import AboutUs from './pages/AboutUs';
 import ForgotPassword from './pages/ForgotPassword';
 import Dashboard from './pages/Dashboard';
+import Cookies from 'js-cookie';
+import NotFound from './pages/NotFound';
+import userDetail from './helpers/userDetail';
 
 function App() {
   return (
@@ -18,10 +21,10 @@ function App() {
         <Route exact path="/login" element={<Login />}/>
         <Route exact path="/signup" element={<Signup />}/>
         <Route exact path="/contact" element={<Contact />}/>
-        <Route path="*" element={<h1>404 Not Found</h1>}/>
+        <Route path="*" element={<NotFound/>}/>
         <Route path='/about' element={<AboutUs/>}/>
         <Route path='/forgot-password' element={<ForgotPassword/>}/>
-        <Route path='/dashboard' element={<Dashboard/>}/>
+        {Cookies.get("session_id") && <Route path='/dashboard' element={<Dashboard/>}/>}
       </Routes>
     </BrowserRouter>
       

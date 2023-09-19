@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import Cookies from 'js-cookie';
+import loginApi from "../../../helpers/loginApi"
 
 export default function LoginForm() {
 
@@ -20,33 +20,37 @@ export default function LoginForm() {
 
     const handleSubmit = async (e) =>{
         e.preventDefault();
+// <<<<<<< Updated upstream
 
-        try{
-            const response = await fetch("http://192.168.166.112:7000/accounts/login/", {
-                method: "POST",
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                },
-                body: JSON.stringify(formData)
-            })
-            .then(response => 
-                response.json()
-            )
-            .then(data => {
-                if (data.status === "success") {
-                    console.log("Login successful!");
-                    // Set the session cookie with the session ID
-                    Cookies.set("session_id_is", data.session_id, { expires: 1 }); // Adjust the expiration as needed
-                    console.log(data)
-                    // window.location.href = "/login";
-                } else {
-                    console.log("Login failed:", data.message);
-                }
-            })
-        }
-        catch(err){
-            console.log(err);
-        }
+//         try{
+//             const response = await fetch("http://192.168.166.112:7000/accounts/login/", {
+//                 method: "POST",
+//                 headers: {
+//                     'Content-Type': 'application/x-www-form-urlencoded'
+//                 },
+//                 body: JSON.stringify(formData)
+//             })
+//             .then(response => 
+//                 response.json()
+//             )
+//             .then(data => {
+//                 if (data.status === "success") {
+//                     console.log("Login successful!");
+//                     // Set the session cookie with the session ID
+//                     Cookies.set("session_id_is", data.session_id, { expires: 1 }); // Adjust the expiration as needed
+//                     console.log(data)
+//                     // window.location.href = "/login";
+//                 } else {
+//                     console.log("Login failed:", data.message);
+//                 }
+//             })
+//         }
+//         catch(err){
+//             console.log(err);
+//         }
+// =======
+        const response = await loginApi(formData);
+        console.log(response);
     }
 
   return (

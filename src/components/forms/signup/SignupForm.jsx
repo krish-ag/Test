@@ -1,6 +1,9 @@
 import React, {useState} from 'react'
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import signupApi from '../../../helpers/signupApi';
+import licenseValidator from '../../../helpers/licenseValidator';
+
 
 export default function SignupForm() {
 
@@ -57,16 +60,20 @@ export default function SignupForm() {
 
     const handleSubmit = async (e) =>{
         e.preventDefault();
-        console.log(formData);
-
+        console.log(formData);  
         if(formData.password !== formData.confirm_password){
             alert("Passwords do not match");
             return;
         }
 
         try{
-            const response = await axios.post(`http://192.168.166.112:7000/accounts/signup/`, formData, { headers: { 'Content-Type': 'application/json' } })
-            console.log(response.data);
+            // check license number
+            if (formData.license_number.length !== 0){
+                const licenseValidationResponse = licenseValidator(formData.license_number, formData.full_name );
+                console.log(licenseValidationResponse);
+                // show message or error
+            }
+            const response = await signupApi(formData);
             setVerified(true);
         }
         catch(err){
@@ -80,7 +87,7 @@ export default function SignupForm() {
         console.log(emailVerificationData);
 
         try{
-            const response = await axios.post(`http://192.168.166.112:7000/accounts/activate/`, emailVerificationData, { headers: { 'Content-Type': 'application/json' } })
+            const response = await axios.post(`http://192.168.1.67:8000/accounts/activate/`, emailVerificationData, { headers: { 'Content-Type': 'application/json' } })
 			console.log(response.data);
             window.location.href = "/login"
         }
