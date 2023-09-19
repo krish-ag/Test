@@ -33,12 +33,11 @@ export default function LoginForm() {
                 response.json()
             )
             .then(data => {
-                console.log(data);
                 if (data.status === "success") {
                     console.log("Login successful!");
                     // Set the session cookie with the session ID
                     Cookies.set("session_id_is", data.session_id, { expires: 1 }); // Adjust the expiration as needed
-                        
+                    console.log(data)
                     // window.location.href = "/login";
                 } else {
                     console.log("Login failed:", data.message);
