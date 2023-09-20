@@ -1,6 +1,6 @@
 import  generateCookie  from "./generateCookie";
 import axios from "axios";
-import env from "../../.env.local";
+import env from "../.env.local";
 
 
 
