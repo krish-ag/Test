@@ -4,7 +4,8 @@ import Cookies from "js-cookie";
 
 const generateCookie = async (data)=>{
     try{
-        const {email, username, first_name, last_name, session_id, is_email_verified, message, is_driver} = data;
+        const {email, username, first_name, last_name, session_id, is_email_verified, message, is_driver, status} = data;
+        if(status === "success"){
         const tokenData = {
             email : email,
             username : username,
@@ -20,10 +21,22 @@ const generateCookie = async (data)=>{
           });
         Cookies.set("session_id", token, { expires: 30 });
 
+        
+
         return {
-            message : "success",
-            token : token
+            message : message,
+            token : token,
+            status : status
         }
+    }
+        
+        return {
+            message : message,
+            token : null,
+            status : status
+        
+
+    }
 
         
 
