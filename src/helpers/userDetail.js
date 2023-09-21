@@ -6,7 +6,7 @@ const getUserDetail = async ()=>{
     try{
         const token = Cookies.get("session_id");
         const decoded = await jwt_decode(token);
-        console.log(decoded)
+        console.log("jwt decoder:",decoded)
         return decoded;
     }
     catch(err){
@@ -14,3 +14,5 @@ const getUserDetail = async ()=>{
     }
     
 }
+
+export default getUserDetail;

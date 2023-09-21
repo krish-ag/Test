@@ -11,6 +11,7 @@ import Dashboard from './pages/Dashboard';
 import Cookies from 'js-cookie';
 import NotFound from './pages/NotFound';
 import userDetail from './helpers/userDetail';
+import Driver_panel from './pages/Driver_panel';
 
 function App() {
   return (
@@ -18,13 +19,14 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route exact path="/" element={<Home />}/>
-        <Route exact path="/login" element={<Login />}/>
-        <Route exact path="/signup" element={<Signup />}/>
+        {!Cookies.get("session_id") && <Route exact path="/login" element={<Login />}/>}
+        {!Cookies.get("session_id") && <Route exact path="/signup" element={<Signup />}/>}
         <Route exact path="/contact" element={<Contact />}/>
         <Route path="*" element={<NotFound/>}/>
         <Route path='/about' element={<AboutUs/>}/>
-        <Route path='/forgot-password' element={<ForgotPassword/>}/>
-        {Cookies.get("session_id") && <Route path='/dashboard' element={<Dashboard/>}/>}
+        {!Cookies.get("session_id") && <Route path='/forgot-password' element={<ForgotPassword/>}/>}
+        {Cookies.get("session_id") && <Route path='/dashboard' element={userDetail().isDriver? (<Driver_panel/>): (<Dashboard/>)}/>}
+        <Route path='/driver' element={<Driver_panel/>}/>
       </Routes>
     </BrowserRouter>
       
