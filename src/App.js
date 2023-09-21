@@ -1,7 +1,7 @@
 import './App.css';
 import Home from "./pages/Home";
 import Login from './pages/Login';
-import React from 'react';
+import React, {useEffect} from 'react';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Signup from './pages/Signup';
 import Contact from './pages/Contact';
@@ -12,6 +12,7 @@ import Cookies from 'js-cookie';
 import NotFound from './pages/NotFound';
 import userDetail from './helpers/userDetail';
 import Driver_panel from './pages/Driver_panel';
+import AddNewBus from './components/dashboard/driver-dashboard/addBus/AddNewBus';
 
 function App() {
   return (
@@ -26,7 +27,8 @@ function App() {
         <Route path='/about' element={<AboutUs/>}/>
         {!Cookies.get("session_id") && <Route path='/forgot-password' element={<ForgotPassword/>}/>}
         {Cookies.get("session_id") && <Route path='/dashboard' element={userDetail().isDriver? (<Driver_panel/>): (<Dashboard/>)}/>}
-        <Route path='/driver' element={<Driver_panel/>}/>
+        {/* {Cookies.get("session_id") && <Route path='/dashboard/add-bus' element={userDetail().isDriver && <AddNewBus/>}/>} */}
+        <Route path='/dashboard-add-bus' element={<AddNewBus/>}/>
       </Routes>
     </BrowserRouter>
       
