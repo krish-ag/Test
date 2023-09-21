@@ -1,8 +1,8 @@
 import React from 'react'
 import Header from '../components/header/Header'
 import Footer from '../components/footer/Footer'
-import Dashboard from '../components/dashboard/Dashboard'
-import DashboardBody from '../components/dashboard/DashboardBody'
+import Dashboard from '../components/dashboard/client-dashboard/Dashboard'
+import DashboardBody from '../components/dashboard/client-dashboard/DashboardBody'
 
 export default function ForgotPassword() {
   return (
