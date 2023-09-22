@@ -4,7 +4,7 @@ import addBus from '../../../../helpers/addBus'
 
 export default function AddBusForm() {
 
-   const [busDetails, setBusDetails] = useState({
+   const [busDetails, setBusDetails] = useState({ 
       busName: "",
       busNumber: "",
       busType: "",
