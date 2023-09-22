@@ -1,9 +1,9 @@
 import React from 'react'
-import BusCard from './BusCard'
 import Pagination from '../Pagination'
 import Sidebar from '../Sidebar'
+import BookingHistory from './BookingHistory'
 
-export default function DashboardBody() {
+export default function BookingPage() {
    return (
       <React.Fragment>
 
@@ -15,12 +15,11 @@ export default function DashboardBody() {
          </button>
          <div className="grid max-w-screen-xl px-4 py-3 mx-auto gap-1  grid-cols-4">
             
-            <Sidebar content={["Dashboard", "Booking history", "Bus near me" , "Geofencing", "Alerts", "Sign out"]} />
-            <BusCard />
-            <BusCard />
-            <BusCard />
-
-            <Pagination/>
+            <Sidebar content={["Dashboard", "History", "Bus near me" , "Geofencing", "Alerts", "Sign out"]} />
+            <BookingHistory/>
+            <BookingHistory/>
+            <BookingHistory/>
+            <BookingHistory/>
 
          </div>
 
