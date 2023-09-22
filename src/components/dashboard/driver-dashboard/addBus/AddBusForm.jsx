@@ -1,7 +1,33 @@
-import React from 'react'
+import React, {useState} from 'react'
 import Sidebar from '../../Sidebar'
+import addBus from '../../../../helpers/addBus'
 
 export default function AddBusForm() {
+
+   const [busDetails, setBusDetails] = useState({ 
+      busName: "",
+      busNumber: "",
+      busType: "",
+      busSource: "",
+      busDestination: "",
+      busRoute: "",
+      busSeats: "",
+      busSourceTime: "",
+      busMessage: ""
+   })
+
+
+   const handleChange =(e)=>{
+      const {name, value} = e.target;
+      console.log(name, value, [name]);
+      setBusDetails({...busDetails, [name]: value})
+  }
+  const handelAddBus = (e) =>{
+      e.preventDefault();
+      console.log(busDetails);
+      const response = addBus(busDetails);
+      console.log(response);
+  }
    return (
       <React.Fragment>
 
@@ -22,65 +48,56 @@ export default function AddBusForm() {
                         <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
                            Add new bus
                         </h1>
-                        <form className="space-y-4 md:space-y-6" action="#">
+                        <form className="space-y-4 md:space-y-6" onSubmit={handelAddBus} >
                            <div className="grid gap-6 mb-6 md:grid-cols-2">
                               <div>
                                  <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Bus name</label>
-                                 <input type="email" name="email" id="email" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-emerald-600 focus:border-emerald-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Parivahan seva" required="" />
+                                 <input type="text" name="busName" onChange={handleChange} id="busName" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-emerald-600 focus:border-emerald-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Parivahan seva" required="" />
                               </div>
                               <div>
                                  <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Bus number</label>
-                                 <input type="email" name="email" id="email" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-emerald-600 focus:border-emerald-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="DL 01 CJ 4324" required="" />
+                                 <input type="text" name="busNumber" onChange={handleChange} id="email" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-emerald-600 focus:border-emerald-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="DL 01 CJ 4324" required="" />
                               </div>
                            </div>
-                           <div className="grid gap-6 mb-6 md:grid-cols-2">
                            <div className="">
                               <label for="countries" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select a bus type</label>
-                              <select id="countries" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                              <select id="countries" name='busType' onChange={handleChange} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                  <option selected>Choose a type</option>
-                                 <option value="US">Sleeper</option>
-                                 <option value="CA">Semi sleeper</option>
-                                 <option value="FR">Luxury</option>
-                                 <option value="DE">Public</option>
+                                 <option value="sleeper">Sleeper</option>
+                                 <option value="semi-sleeper">Semi sleeper</option>
+                                 <option value="luxury">Luxury</option>
+                                 <option value="public">Public</option>
                               </select>
-                           </div>
-                           <div className="">
-
-                              <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="file_input">Upload Bus Image</label>
-                              <input className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" aria-describedby="file_input_help" id="file_input" type="file"/>
-                                 <p className="mt-1 text-sm text-gray-500 dark:text-gray-300" id="file_input_help">PNG or JPG (MAX. 800x400px).</p>
-
-                           </div>
                            </div>
                            <div className="grid gap-6 mb-6 md:grid-cols-2">
                               <div>
                                  <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Bus source</label>
-                                 <input type="email" name="email" id="email" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-emerald-600 focus:border-emerald-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Sadar Bazar" required="" />
+                                 <input type="text" onChange={handleChange} name="busSource" id="email" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-emerald-600 focus:border-emerald-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Sadar Bazar" required="" />
                               </div>
                               <div>
                                  <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Bus destination</label>
-                                 <input type="email" name="email" id="email" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-emerald-600 focus:border-emerald-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Chandni Chowk" required="" />
+                                 <input type="text" onChange={handleChange} name="busDestination" id="email" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-emerald-600 focus:border-emerald-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Chandni Chowk" required="" />
                               </div>
                            </div>
                            <div>
                               <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Bus route</label>
-                              <input type="email" name="email" id="email" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-emerald-600 focus:border-emerald-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Sadar , Rajiv chowk , Narol plaza , India gate , Chandni chowk" required="" />
+                              <input type="text" name="busRoute" onChange={handleChange} id="email" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-emerald-600 focus:border-emerald-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Sadar , Rajiv chowk , Narol plaza , India gate , Chandni chowk" required="" />
                            </div>
                            <div className="grid gap-6 mb-6 md:grid-cols-2">
                               <div>
                                  <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Number of seats</label>
-                                 <input type="email" name="email" id="email" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-emerald-600 focus:border-emerald-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="40" required="" />
+                                 <input type="number" name="busSeats" onChange={handleChange} id="email" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-emerald-600 focus:border-emerald-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="40" required="" />
                               </div>
                               <div>
                                  <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Source Timeing</label>
-                                 <input type="email" name="email" id="email" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-emerald-600 focus:border-emerald-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="23:00 pm" required="" />
+                                 <input type="text" name="busSourceTime" onChange={handleChange} id="email" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-emerald-600 focus:border-emerald-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="23:00 pm" required="" />
                               </div>
                            </div>
 
                            <label for="message" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your message(optional)</label>
-                           <textarea id="message" rows="4" className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Write your thoughts here..."></textarea>
+                           <textarea id="message" name='busMessage' rows="4" onChange={handleChange} className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Write your thoughts here..."></textarea>
 
-                           <button type="submit" className="w-full text-white bg-emerald-600 hover:bg-emerald-700 focus:ring-4 focus:outline-none focus:ring-emerald-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-emerald-600 dark:hover:bg-emerald-700 dark:focus:ring-emerald-800">Add new bus</button>
+                           <button type="submit"  className="w-full text-white bg-emerald-600 hover:bg-emerald-700 focus:ring-4 focus:outline-none focus:ring-emerald-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-emerald-600 dark:hover:bg-emerald-700 dark:focus:ring-emerald-800">Add new bus</button>
                         </form>
                      </div>
                   </div>
