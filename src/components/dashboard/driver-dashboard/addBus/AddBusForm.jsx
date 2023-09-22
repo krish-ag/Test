@@ -1,6 +1,5 @@
 import React from 'react'
 import Sidebar from '../../Sidebar'
-import Pagination from '../../Pagination'
 
 export default function AddBusForm() {
    return (
@@ -16,59 +15,70 @@ export default function AddBusForm() {
 
             <Sidebar content={["Dashboard", "History", "Add new bus", "Current bus status", "Alerts", "Sign out"]} />
             <section className="bg-gray-50 col-span-3 dark:bg-gray-900">
-               <div className="flex flex-col items-center px-6 py-8 mx-auto md:h-screen lg:py-0">
-                  <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
-                    
+               <div className="flex flex-col px-6 py-8 mx-auto md:h-screen lg:py-0">
+                  <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 xl:p-0 dark:bg-gray-800 dark:border-gray-700">
+
                      <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
                         <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
                            Add new bus
                         </h1>
                         <form className="space-y-4 md:space-y-6" action="#">
-                        <div class="grid gap-6 mb-6 md:grid-cols-2">
-                           <div>
-                              <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Bus name</label>
-                              <input type="email" name="email" id="email" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-emerald-600 focus:border-emerald-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="name@company.com" required="" />
+                           <div className="grid gap-6 mb-6 md:grid-cols-2">
+                              <div>
+                                 <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Bus name</label>
+                                 <input type="email" name="email" id="email" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-emerald-600 focus:border-emerald-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Parivahan seva" required="" />
+                              </div>
+                              <div>
+                                 <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Bus number</label>
+                                 <input type="email" name="email" id="email" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-emerald-600 focus:border-emerald-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="DL 01 CJ 4324" required="" />
+                              </div>
                            </div>
-                           <div>
-                              <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Bus number</label>
-                              <input type="email" name="email" id="email" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-emerald-600 focus:border-emerald-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="name@company.com" required="" />
+                           <div className="grid gap-6 mb-6 md:grid-cols-2">
+                           <div className="">
+                              <label for="countries" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select a bus type</label>
+                              <select id="countries" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                 <option selected>Choose a type</option>
+                                 <option value="US">Sleeper</option>
+                                 <option value="CA">Semi sleeper</option>
+                                 <option value="FR">Luxury</option>
+                                 <option value="DE">Public</option>
+                              </select>
+                           </div>
+                           <div className="">
+
+                              <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="file_input">Upload Bus Image</label>
+                              <input className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" aria-describedby="file_input_help" id="file_input" type="file"/>
+                                 <p className="mt-1 text-sm text-gray-500 dark:text-gray-300" id="file_input_help">PNG or JPG (MAX. 800x400px).</p>
+
                            </div>
                            </div>
-                           <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select a bus type</label>
-                           <select id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                              <option selected>Choose a type</option>
-                              <option value="US">Sleeper</option>
-                              <option value="CA">Semi sleeper</option>
-                              <option value="FR">Luxury</option>
-                              <option value="DE">Public</option>
-                           </select>
-                           <div class="grid gap-6 mb-6 md:grid-cols-2">
-                           <div>
-                              <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Bus source</label>
-                              <input type="email" name="email" id="email" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-emerald-600 focus:border-emerald-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="name@company.com" required="" />
-                           </div>
-                           <div>
-                              <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Bus destination</label>
-                              <input type="email" name="email" id="email" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-emerald-600 focus:border-emerald-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="name@company.com" required="" />
-                           </div>
+                           <div className="grid gap-6 mb-6 md:grid-cols-2">
+                              <div>
+                                 <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Bus source</label>
+                                 <input type="email" name="email" id="email" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-emerald-600 focus:border-emerald-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Sadar Bazar" required="" />
+                              </div>
+                              <div>
+                                 <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Bus destination</label>
+                                 <input type="email" name="email" id="email" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-emerald-600 focus:border-emerald-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Chandni Chowk" required="" />
+                              </div>
                            </div>
                            <div>
                               <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Bus route</label>
-                              <input type="email" name="email" id="email" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-emerald-600 focus:border-emerald-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="name@company.com" required="" />
+                              <input type="email" name="email" id="email" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-emerald-600 focus:border-emerald-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Sadar , Rajiv chowk , Narol plaza , India gate , Chandni chowk" required="" />
                            </div>
-                           <div class="grid gap-6 mb-6 md:grid-cols-2">
-                           <div>
-                              <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Number of seats</label>
-                              <input type="email" name="email" id="email" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-emerald-600 focus:border-emerald-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="name@company.com" required="" />
-                           </div>
-                           <div>
-                              <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Price per ticket</label>
-                              <input type="email" name="email" id="email" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-emerald-600 focus:border-emerald-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="name@company.com" required="" />
-                           </div>
+                           <div className="grid gap-6 mb-6 md:grid-cols-2">
+                              <div>
+                                 <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Number of seats</label>
+                                 <input type="email" name="email" id="email" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-emerald-600 focus:border-emerald-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="40" required="" />
+                              </div>
+                              <div>
+                                 <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Source Timeing</label>
+                                 <input type="email" name="email" id="email" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-emerald-600 focus:border-emerald-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="23:00 pm" required="" />
+                              </div>
                            </div>
 
-<label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your message(optional)</label>
-<textarea id="message" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Write your thoughts here..."></textarea>
+                           <label for="message" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your message(optional)</label>
+                           <textarea id="message" rows="4" className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Write your thoughts here..."></textarea>
 
                            <button type="submit" className="w-full text-white bg-emerald-600 hover:bg-emerald-700 focus:ring-4 focus:outline-none focus:ring-emerald-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-emerald-600 dark:hover:bg-emerald-700 dark:focus:ring-emerald-800">Add new bus</button>
                         </form>

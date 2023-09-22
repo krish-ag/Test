@@ -27,6 +27,7 @@ function App() {
         <Route path='/about' element={<AboutUs/>}/>
         {!Cookies.get("session_id") && <Route path='/forgot-password' element={<ForgotPassword/>}/>}
         {Cookies.get("session_id") && <Route path='/dashboard' element={userDetail().isDriver? (<Driver_panel/>): (<Dashboard/>)}/>}
+        <Route path='/dashboard-driver' element={<Driver_panel/>}/>
         {/* {Cookies.get("session_id") && <Route path='/dashboard/add-bus' element={userDetail().isDriver && <AddNewBus/>}/>} */}
         <Route path='/dashboard-add-bus' element={<AddNewBus/>}/>
       </Routes>
