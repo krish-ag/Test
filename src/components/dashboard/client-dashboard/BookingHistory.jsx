@@ -17,6 +17,7 @@ export default function BookingHistory() {
         <h5 className="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">(DL 04 SL 4543) </h5>
     </a>
     <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">Timing : 23:00 pm - 19:20 pm</p>
+    <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">Seats : B12 , B15</p>
     <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">Date : 29 september 2023</p>
     <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">Source : Chandni Chowk</p>
     <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">Price : Rs. 1245/-</p>
