@@ -14,6 +14,7 @@ import userDetail from './helpers/userDetail';
 import Driver_panel from './pages/Driver_panel';
 import AddNewBus from './components/dashboard/driver-dashboard/addBus/AddNewBus';
 import Bookings from './pages/Bookings';
+import TrackMap from './pages/TrackMap';
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
         {/* {Cookies.get("session_id") && <Route path='/dashboard/add-bus' element={userDetail().isDriver && <AddNewBus/>}/>} */}
         <Route path='/dashboard-add-bus' element={<AddNewBus/>}/>
         <Route path='/dashboard-view-booking-history' element={<Bookings/>}/>
+        <Route path='/dashboard-view-map' element={<TrackMap/>}/>
       </Routes>
     </BrowserRouter>
       
