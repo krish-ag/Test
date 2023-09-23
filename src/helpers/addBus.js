@@ -8,7 +8,7 @@ const addBus = async (bus) => {
 
         const getUser = await userDetail();
         bus["username"] = getUser.username;
-        const response = await axios.post(`${env.IP}/api/bus`, bus, { headers: { 'Content-Type': 'application/json' } });
+        const response = await axios.post(`${env.IP}/dashboard/add-bus/`, bus, { headers: { 'Content-Type': 'application/json' } });
         console.log(response);
         return response;
     }
