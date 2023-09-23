@@ -67,6 +67,9 @@ export default function AddBusForm() {
                                  <option value="semi-sleeper">Semi sleeper</option>
                                  <option value="luxury">Luxury</option>
                                  <option value="public">Public</option>
+                                 <option value="volvo">Volvo</option>
+                                 <option value="ac">AC</option>
+                                 <option value="non-ac">Non AC</option>
                               </select>
                            </div>
                            <div className="grid gap-6 mb-6 md:grid-cols-2">
