@@ -14,11 +14,10 @@ export default function Dashboard() {
         console.log(name, value, [name]);
         setSearchBus({...searchBus, [name]: value})
     }
-    const handelsearch = (e) =>{
+    const handelsearch = async (e) =>{
         e.preventDefault();
-        console.log(searchBus);
-        const response = searchBusAPI(searchBus);
-        console.log(response);
+        const response = await searchBusAPI(searchBus);
+        console.log(response.data);
     }
   return (
     <React.Fragment>

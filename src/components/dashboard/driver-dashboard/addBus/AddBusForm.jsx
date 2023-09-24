@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import Sidebar from '../../Sidebar'
 import addBus from '../../../../helpers/addBus'
+import env from "../../../../.env.local";
 
 export default function AddBusForm() {
 
@@ -13,7 +14,11 @@ export default function AddBusForm() {
       busRoute: "",
       busSeats: "",
       busSourceTime: "",
-      busMessage: ""
+      busMessage: "",
+      coordinates: {
+         lat: 0,
+         lng: 0,
+       },
    })
 
 
@@ -25,9 +30,45 @@ export default function AddBusForm() {
   const handelAddBus = (e) =>{
       e.preventDefault();
       console.log(busDetails);
-      const response = addBus(busDetails);
-      console.log(response);
-  }
+      const { busSource } = busDetails;
+      const geocoder = new window.google.maps.Geocoder();
+      geocoder.geocode({ address: busSource }, (results, status) => {
+         if (status === 'OK' && results.length > 0) {
+            console.log("result is",results);
+           const { lat, lng } = results[0].geometry.location;
+           const updatedBusDetails = {
+             ...busDetails,
+             coordinates: { lat, lng },
+           };
+           setBusDetails(updatedBusDetails);
+           console.log(updatedBusDetails);
+   
+           const response = addBus(updatedBusDetails);
+           console.log(response);
+         } else {
+           console.error('Geocode was not successful for the following reason:', status);
+         }
+       });
+      // const response = addBus(busDetails);
+      // console.log(response);
+
+   }
+   React.useEffect(() => {
+      // Load the Google Maps script when the component mounts
+      const script = document.createElement('script');
+      script.src = `https://maps.googleapis.com/maps/api/js?key=${env.API_KEY_GOOGLE_MAPS}&libraries=places`;
+      script.async = true;
+      script.defer = true;
+      script.onload = () => {
+        // The script has loaded
+      };
+      document.head.appendChild(script);
+  
+      return () => {
+        // Clean up by removing the script when the component unmounts
+        document.head.removeChild(script);
+      };
+    }, []);
    return (
       <React.Fragment>
 
