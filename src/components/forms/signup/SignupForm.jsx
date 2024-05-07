@@ -1,6 +1,10 @@
 import React, {useState} from 'react'
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import signupApi from '../../../helpers/signupApi';
+import licenseValidator from '../../../helpers/licenseValidator';
+import env from '../../../.env.local.js'
+
 
 export default function SignupForm() {
 
@@ -83,7 +87,7 @@ export default function SignupForm() {
         console.log(emailVerificationData);
 
         try{
-            const response = await axios.post(`http://192.168.166.112:7000/accounts/activate/`, emailVerificationData, { headers: { 'Content-Type': 'application/json' } })
+            const response = await axios.post(`${env.IP}/accounts/activate/`, emailVerificationData, { headers: { 'Content-Type': 'application/json' } })
 			console.log(response.data);
             window.location.href = "/login"
         }

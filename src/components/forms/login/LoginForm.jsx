@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import Cookies from 'js-cookie';
+import loginApi from "../../../helpers/loginApi"
 
 export default function LoginForm() {
 
@@ -56,7 +56,6 @@ export default function LoginForm() {
             console.error('Error during login:', err);
         }
     };
-    
 
   return (
     <React.Fragment>

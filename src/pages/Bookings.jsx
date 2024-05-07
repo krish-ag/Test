@@ -2,14 +2,14 @@ import React from 'react'
 import Header from '../components/header/Header'
 import Footer from '../components/footer/Footer'
 import Dashboard from '../components/dashboard/client-dashboard/Dashboard'
-import DashboardBody from '../components/dashboard/client-dashboard/DashboardBody'
+import BookingPage from '../components/dashboard/client-dashboard/BookingPage'
 
-export default function ForgotPassword() {
+export default function Bookings() {
   return (
     <React.Fragment>
         <Header/>
         <Dashboard/>
-        <DashboardBody/>
+        <BookingPage/>
         <Footer/>
     </React.Fragment>
   )
