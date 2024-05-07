@@ -2,12 +2,9 @@ import jwt_decode from "jwt-decode";
 import Cookies from "js-cookie";
 
 
-const getUserDetail = async ()=>{
+const isDriver = async ()=>{
     try{
-        const token = Cookies.get("session_id");
-        const decoded = await jwt_decode(token);
-        console.log("jwt decoder:",decoded)
-        return decoded;
+        return Cookies.get("role")==="driver"?true:false;
     }
     catch(err){
         console.log(err)
@@ -15,4 +12,4 @@ const getUserDetail = async ()=>{
     
 }
 
-export default getUserDetail;
+export default isDriver;

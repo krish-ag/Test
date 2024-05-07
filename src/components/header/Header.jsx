@@ -1,31 +1,28 @@
-import Cookies from 'js-cookie'
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios';
 import Cookies from 'js-cookie';
 
 export default function Header() {
-
+  
+  const accesstoken = Cookies.get("accessToken");
+  const navigate = useNavigate();
   
   const handleLogout = async () => {
     try {
-      console.log("inside on click");
-        const accesstoken = Cookies.get("accesstoken");
-        console.log(accesstoken);
-        if (!accesstoken) {
-            console.log("Access token not found");
-            return;
-        }
-
         const response = await axios.post("http://localhost:3000/api/v1/users/logout", null, {
             headers: {
                 Authorization: `bearer ${accesstoken}`
-            },
-            // withCredentials: true
+            }
         });
 
-        console.log(response);
-        console.log(response.data);
+        if (response.data.statusCode !== 200) {
+            throw new Error('Network response was not ok');
+        }
+        Cookies.remove("accessToken");
+        Cookies.remove("refreshToken");
+        Cookies.remove("role");
+        navigate('/login');
     } catch (err) {
         console.log("Error while logging out ", err);
     }
@@ -91,9 +88,11 @@ export default function Header() {
       <li>
         <Link to="/contact" className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Contact</Link>
       </li>
-      {!Cookies.get("session_id") && (<li>
+      {!accesstoken && (<li>
         <Link to="/login" className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Login</Link>
-      <button onClick={handleLogout} className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Logout</button>
+      </li>)}
+      {accesstoken && (<li>
+          <button onClick={handleLogout} className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Logout</button>
       </li>)}
     </ul>
   </div>
