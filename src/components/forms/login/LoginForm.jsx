@@ -18,40 +18,44 @@ export default function LoginForm() {
         });
     }
 
-    const handleSubmit = async (e) =>{
+    const handleSubmit = async (e) => {
         e.preventDefault();
-// <<<<<<< Updated upstream
+        const formDataToSend = new URLSearchParams(formData);
+    
+        try {
+            const response = await fetch("http://localhost:3000/api/v1/users/login", {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: formDataToSend.toString()
+            });
+    
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+    
+            const data = await response.json();
+            console.log("data is" , data)
+    
+            if (data.statusCode === 200) {
+                console.log("Login successful!");
+                // Set the access token and refresh token
 
-//         try{
-//             const response = await fetch("http://192.168.166.112:7000/accounts/login/", {
-//                 method: "POST",
-//                 headers: {
-//                     'Content-Type': 'application/x-www-form-urlencoded'
-//                 },
-//                 body: JSON.stringify(formData)
-//             })
-//             .then(response => 
-//                 response.json()
-//             )
-//             .then(data => {
-//                 if (data.status === "success") {
-//                     console.log("Login successful!");
-//                     // Set the session cookie with the session ID
-//                     Cookies.set("session_id_is", data.session_id, { expires: 1 }); // Adjust the expiration as needed
-//                     console.log(data)
-//                     // window.location.href = "/login";
-//                 } else {
-//                     console.log("Login failed:", data.message);
-//                 }
-//             })
-//         }
-//         catch(err){
-//             console.log(err);
-//         }
-// =======
-        const response = await loginApi(formData);
-        console.log(response);
-    }
+                const { accesstoken,refreshtoken } = data.data;
+                Cookies.set("accesstoken", accesstoken, { expires: 10 });
+                Cookies.set("refreshtoken", refreshtoken, { expires: 30 });
+                console.log("accesstoken is" , accesstoken);
+                console.log("refreshtoken is ", refreshtoken);
+                
+                // Redirect or perform other actions upon successful login
+            } else {
+                console.log("Login failed:", data.message);
+            }
+        } catch (err) {
+            console.error('Error during login:', err);
+        }
+    };
 
   return (
     <React.Fragment>
