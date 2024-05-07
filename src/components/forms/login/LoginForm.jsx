@@ -1,8 +1,12 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import loginApi from "../../../helpers/loginApi"
+import Cookies from 'js-cookie';
+import axios from 'axios';
 
 export default function LoginForm() {
+
+    const navigate = useNavigate();
 
     const [formData, setFormData] = React.useState({
         email: "",
@@ -20,37 +24,31 @@ export default function LoginForm() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const formDataToSend = new URLSearchParams(formData);
-    
         try {
-            const response = await fetch("http://localhost:3000/api/v1/users/login", {
-                method: "POST",
+            const response = await axios.post("http://localhost:3000/api/v1/users/login", 
+            JSON.stringify(formData),
+            {
                 headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
+                    'Content-Type': 'application/json'
                 },
-                body: formDataToSend.toString()
             });
     
-            if (!response.ok) {
+            if (response.data.statusCode !== 200) {
                 throw new Error('Network response was not ok');
             }
     
-            const data = await response.json();
-            console.log("data is" , data)
-    
-            if (data.statusCode === 200) {
-                console.log("Login successful!");
-                // Set the access token and refresh token
-
-                const { accesstoken,refreshtoken } = data.data;
-                Cookies.set("accesstoken", accesstoken, { expires: 10 });
-                Cookies.set("refreshtoken", refreshtoken, { expires: 30 });
-                console.log("accesstoken is" , accesstoken);
-                console.log("refreshtoken is ", refreshtoken);
+            if (response.data.statusCode === 200) {
+                const data = response.data.data;
+                console.log(response.data.data);
+                const { accesstoken,refreshtoken } = data;
+                const { role } = data.loggedinuser 
+                Cookies.set("accessToken", accesstoken, { expires: 10 });
+                Cookies.set("refreshToken", refreshtoken, { expires: 30 });
+                Cookies.set("role", role);
+                navigate('/dashboard');
                 
-                // Redirect or perform other actions upon successful login
             } else {
-                console.log("Login failed:", data.message);
+                console.log("Login failed:");
             }
         } catch (err) {
             console.error('Error during login:', err);
