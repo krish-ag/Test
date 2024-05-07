@@ -1,9 +1,28 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import BusCard from './BusCard'
 import Pagination from '../Pagination'
 import Sidebar from '../Sidebar'
+import axios from 'axios'
 
 export default function DashboardBody() {
+
+   const [buses, setBuses] = React.useState([])
+
+   useEffect(() => {
+      const fetchData = async () => {
+         try {
+            const response = await axios.get("https://tracking-jboc.onrender.com/api/v1/bus/get-all-buses")
+            setBuses(response.data.data)
+         } catch (error) {
+            console.log(error.message)
+         }
+      }
+      fetchData()
+   }, [])
+
+   console.log("buses are",buses)
+   
+
    return (
       <React.Fragment>
 
@@ -16,9 +35,9 @@ export default function DashboardBody() {
          <div className="grid max-w-screen-xl px-4 py-3 mx-auto gap-1  grid-cols-4">
             
             <Sidebar content={["Dashboard", "Booking history", "Bus near me" , "Geofencing", "Alerts", "Sign out"]} />
-            <BusCard />
-            <BusCard />
-            <BusCard />
+            {buses.map((bus, index) => {
+               return <BusCard key={index} bus={bus}/>
+            })}
 
             <Pagination/>
 
