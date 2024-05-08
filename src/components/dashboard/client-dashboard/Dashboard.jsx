@@ -1,7 +1,8 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import searchBusAPI from '../../../helpers/searchBusAPI'
+import axios from 'axios';
 
-export default function Dashboard() {
+export default function Dashboard({ updateBuses, updateSearchState }) {
     const [searchBus, setSearchBus] = useState({
         source: '',
         destination: '',
@@ -16,7 +17,12 @@ export default function Dashboard() {
     }
     const handelsearch = async (e) =>{
         e.preventDefault();
-        const response = await searchBusAPI(searchBus);
+        console.log(searchBus)
+        searchBus.date = searchBus.date.split('-').reverse().join('-')
+        const response = await axios.get(`http://localhost:3000/api/v1/search/bus?source=${searchBus.source}&destination=${searchBus.destination}&date=${searchBus.date}`)
+        console.log(`http://localhost:3000/api/v1/search/bus?source=${searchBus.source}&destination=${searchBus.destination}&date=${searchBus.date}`)
+        updateBuses(response.data.data)
+        updateSearchState()
         console.log(response.data);
     }
   return (

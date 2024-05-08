@@ -1,10 +1,16 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import BusCard from './BusCard'
 import Pagination from '../Pagination'
 import Sidebar from '../Sidebar'
 import axios from 'axios'
 
-export default function DashboardBody() {
+export default function DashboardBody(props) {
+
+   const [searchState, setSearchState] = useState(false);
+
+   const { searchBuses } = props;
+
+
 
    const [buses, setBuses] = React.useState([])
 
@@ -19,6 +25,12 @@ export default function DashboardBody() {
       }
       fetchData()
    }, [])
+
+   useEffect(() => {
+      // Update local state whenever propBuses changes
+      setBuses(propBuses);
+      setSearchState(true);
+    }, [propBuses]);
 
    console.log("buses are",buses)
    
@@ -38,7 +50,6 @@ export default function DashboardBody() {
             {buses.map((bus, index) => {
                return <BusCard key={index} bus={bus}/>
             })}
-
             <Pagination/>
 
          </div>
