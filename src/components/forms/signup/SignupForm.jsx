@@ -44,7 +44,7 @@ export default function SignupForm() {
         e.preventDefault();
 
         try{
-            const response = await axios.post(`http://localhost:3000/api/v1/users/register`, 
+            const response = await axios.post(`https://tracking-jboc.onrender.com/api/v1/users/register`, 
             JSON.stringify(formData), 
             { 
                 headers: { 
@@ -53,7 +53,8 @@ export default function SignupForm() {
             })
             console.log(response.data)
             if(response.data.statusCode === 200){
-                const { accesstoken, refreshtoken, role } = response.data.data;
+                const { accesstoken, refreshtoken } = response.data.data;
+                const {role} = response.data.data.createdUser;
                 Cookies.set("accessToken", accesstoken, 
                 {
                     expires: 10

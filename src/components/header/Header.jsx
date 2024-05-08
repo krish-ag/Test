@@ -10,7 +10,7 @@ export default function Header() {
   
   const handleLogout = async () => {
     try {
-        const response = await axios.post("http://localhost:3000/api/v1/users/logout", null, {
+        const response = await axios.post("https://tracking-jboc.onrender.com/api/v1/users/logout", null, {
             headers: {
                 Authorization: `bearer ${accesstoken}`
             }
