@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import Header from '../components/header/Header'
 import Footer from '../components/footer/Footer'
 import Dashboard from '../components/dashboard/client-dashboard/Dashboard'
@@ -10,6 +10,8 @@ import Cookies from 'js-cookie'
 
 export default function Dashboards() {
   const navigate = useNavigate();
+  const [buses, setBuses] = useState([]);
+  const [searchState, setSearchState] = useState(false);
 
   console.log(isAuthenticated())
 
@@ -24,11 +26,19 @@ export default function Dashboards() {
     }
   }, [])
 
+  const updateBuses = (newBuses) => {
+    setBuses(newBuses);
+  };
+
+  const updateSearchState = () => {
+    setSearchState(!searchState);
+  }
+
   return (
     <React.Fragment>
         <Header/>
-        <Dashboard/>
-        <DashboardBody/>
+        <Dashboard updateBuses={updateBuses} />
+        <DashboardBody searchBuses={buses} searchState={searchState} updateSearchState={updateSearchState}/>
         <Footer/>
     </React.Fragment>
   )
